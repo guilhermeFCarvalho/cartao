@@ -1,21 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { TextInput } from 'react-native-paper';
+import Cartao from './components/Cartao';
+
 
 export default function App() {
+  const [cardNumber, setCardNumber] = React.useState(" ")
+  
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View>
+      <View style={styles.container}>
+        <Cartao
+          cardNumber = {cardNumber}
+        />
+      </View>
+      <TextInput
+          style={styles.inputs}
+          label="card number"
+          value={cardNumber}
+          onChangeText={cardNumber=> setCardNumber(cardNumber)}
+      />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: 'grey',
+    padding: '6%'
   },
+  inputs: {
+    margin: '2%'
+  }
+
 });
+
